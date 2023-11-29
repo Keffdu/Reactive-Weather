@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cities from "./data.js"
-import WeatherCard from './components/WeatherCard';
-
+import { chooseIcon, WeatherCard} from './components/WeatherCard';
+import Location from './components/Location.js'
 
 function App() {
+
+    const [location, setLocation] = useState('Seoul')
+
     return (
         <>
             <h1 className = "title">REACTIVE WEATHER</h1>
@@ -17,11 +20,14 @@ function App() {
                         forecast={city.forecast}
                     />
                 ))}
-                
-
-
             </div>
-            
+            <div className='app'>
+                <Location 
+                    data={cities}
+                    location={location}
+                    setLocation={setLocation}
+                />
+            </div>
         </>
     )
 }
