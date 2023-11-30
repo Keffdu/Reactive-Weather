@@ -3,18 +3,21 @@ import { WeatherCard } from './WeatherCard';
 
 function Location({data, location, setLocation}) {
 
-    const result = data.find(({city}) => city === location)
+    const search = data.find(({city}) => city === location)
 
-    return (  
-        <>
+    if (search) {
+       return (
         <WeatherCard 
-            city={result.city}
-            temp={result.temperature}
-            forecast={result.forecast}
+            city={search.city}
+            temp={search.temperature}
+            forecast={search.forecast}
         />
-
-        </>
-    );
+       ) 
+    } else {
+        return (
+        <h2>Location not found!</h2>
+    )
+    }
 }
 
 export default Location;

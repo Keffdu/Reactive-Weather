@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import cities from "./data.js"
 import { chooseIcon, WeatherCard} from './components/WeatherCard';
 import Location from './components/Location.js'
+import Form from './components/Form.js';
 
 function App() {
 
-    const [location, setLocation] = useState('Seoul')
+    const [location, setLocation] = useState('')
 
     return (
         <>
             <h1 className = "title">REACTIVE WEATHER</h1>
             <h3 className = "subtitle">Up to the minute weather news</h3>
-            <div className = "app">
+                <Form 
+                    location={location}
+                    setLocation={setLocation}
+                />
+            {/* <div className = "app">
                 {cities.map((city, index) => (
                     <WeatherCard 
                         key={index}
@@ -20,7 +25,7 @@ function App() {
                         forecast={city.forecast}
                     />
                 ))}
-            </div>
+            </div> */}
             <div className='app'>
                 <Location 
                     data={cities}
